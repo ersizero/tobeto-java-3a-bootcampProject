@@ -7,11 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateInstructorResponse {
+public class GetAllInstructorResponse {
     private int id;
     private String userName;
-    private String firstName;
-    private String lastName;
     private String email;
     private String companyName;
 }
