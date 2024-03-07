@@ -17,12 +17,12 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class InstructorManager implements InstructorService {
-    private InstructorRepository insturctorRepository;
+    private InstructorRepository instructorRepository;
     private ModelMapperService modelMapperService;
     @Override
     public CreateInstructorResponse create(CreateInstructorRequest createInstructorRequest) {
         Instructor instructorToBeCreated = modelMapperService.forRequest().map(createInstructorRequest, Instructor.class);
-        insturctorRepository.save(instructorToBeCreated);
+        instructorRepository.save(instructorToBeCreated);
         CreateInstructorResponse response = modelMapperService.forResponse()
                 .map(instructorToBeCreated, CreateInstructorResponse.class);
         return response;
@@ -30,13 +30,13 @@ public class InstructorManager implements InstructorService {
 
     @Override
     public GetInstructorResponseById getById(int instructorId) {
-        Instructor getInstructor = insturctorRepository.findById(instructorId)
+        Instructor getInstructor = instructorRepository.findById(instructorId)
                 .orElseThrow(()-> new RuntimeException("Bu id bulunamadı"));
         return modelMapperService.forResponse().map(getInstructor, GetInstructorResponseById.class);
     }
     @Override
     public List<GetAllInstructorResponse> getAll() {
-        List<Instructor> instructors = insturctorRepository.findAll();
+        List<Instructor> instructors = instructorRepository.findAll();
         List<GetAllInstructorResponse> instructorResponses = instructors.stream().map(instructor -> modelMapperService
                         .forResponse()
                         .map(instructor, GetAllInstructorResponse.class))

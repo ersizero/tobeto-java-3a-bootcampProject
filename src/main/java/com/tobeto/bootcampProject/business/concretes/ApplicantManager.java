@@ -2,9 +2,11 @@ package com.tobeto.bootcampProject.business.concretes;
 
 import com.tobeto.bootcampProject.business.abstracts.ApplicantService;
 import com.tobeto.bootcampProject.business.requests.create.applicant.CreateApplicantRequest;
+import com.tobeto.bootcampProject.business.requests.create.applicant.UpdateApplicantRequest;
 import com.tobeto.bootcampProject.business.responses.create.applicant.CreateApplicantResponse;
 import com.tobeto.bootcampProject.business.responses.create.applicant.GetAllApplicantResponse;
 import com.tobeto.bootcampProject.business.responses.create.applicant.GetApplicantResponseById;
+import com.tobeto.bootcampProject.business.responses.create.applicant.UpdateApplicantResponse;
 import com.tobeto.bootcampProject.core.mapper.ModelMapperService;
 import com.tobeto.bootcampProject.entities.Applicant;
 import com.tobeto.bootcampProject.repositories.ApplicantRepository;
@@ -45,5 +47,25 @@ public class ApplicantManager implements ApplicantService {
                         .map(applicant, GetAllApplicantResponse.class))
                 .collect(Collectors.toList());
         return applicantResponses;
+    }
+
+    @Override
+    public UpdateApplicantResponse update(int applicantId, UpdateApplicantRequest updateApplicantRequest) {
+        Applicant existingApplicant = applicantRepository.findById(applicantId)
+                .orElseThrow(()-> new RuntimeException("Id değeri belirtilen applicant bulunamadı" + applicantId));
+        existingApplicant.setFirstName(updateApplicantRequest.getFirstName());
+        existingApplicant.setLastName(updateApplicantRequest.getLastName());
+        existingApplicant.setDateOfBirth(updateApplicantRequest.getDateOfBirth());
+        existingApplicant.setPassword(updateApplicantRequest.getPassword());
+        existingApplicant.setAbout(updateApplicantRequest.getAbout());
+        applicantRepository.save(existingApplicant);
+        UpdateApplicantResponse response = modelMapperService.forResponse()
+                .map(existingApplicant, UpdateApplicantResponse.class);
+        return response;
+    }
+
+    @Override
+    public void deleteAll() {
+        applicantRepository.deleteAll();
     }
 }

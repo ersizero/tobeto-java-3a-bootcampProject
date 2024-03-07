@@ -10,7 +10,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateApplicantRequest {
-    private int id;
     private String userName;
     private String firstName;
     private String lastName;
@@ -19,4 +18,6 @@ public class CreateApplicantRequest {
     private String email;
     private String password;
     private String about;
+    private Date dateCreated;
+
 }

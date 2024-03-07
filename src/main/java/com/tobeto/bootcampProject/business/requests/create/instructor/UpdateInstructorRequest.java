@@ -5,19 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateInstructorRequest {
-    private String userName;
+public class UpdateInstructorRequest {
+    private int id;
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
-    private String nationalIdentity;
-    private String email;
     private String password;
     private String companyName;
-    private Date dateCreated;
-
 }

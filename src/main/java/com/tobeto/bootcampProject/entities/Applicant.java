@@ -1,6 +1,5 @@
 package com.tobeto.bootcampProject.entities;
 
-import com.tobeto.bootcampProject.core.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 @Getter

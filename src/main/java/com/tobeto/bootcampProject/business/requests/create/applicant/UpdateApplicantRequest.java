@@ -1,23 +1,20 @@
-package com.tobeto.bootcampProject.business.requests.create.instructor;
+package com.tobeto.bootcampProject.business.requests.create.applicant;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateInstructorRequest {
-    private String userName;
+public class UpdateApplicantRequest {
+    private int id;
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
-    private String nationalIdentity;
-    private String email;
     private String password;
-    private String companyName;
-    private Date dateCreated;
-
+    private String about;
+    private Date dateUpdated;
 }

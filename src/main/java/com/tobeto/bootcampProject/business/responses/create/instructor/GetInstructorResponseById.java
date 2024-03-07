@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetInstructorResponseById {
+
     private String userName;
     private String email;
     private String companyName;

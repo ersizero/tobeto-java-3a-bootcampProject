@@ -2,16 +2,15 @@ package com.tobeto.bootcampProject.controller;
 
 import com.tobeto.bootcampProject.business.abstracts.ApplicantService;
 import com.tobeto.bootcampProject.business.requests.create.applicant.CreateApplicantRequest;
+import com.tobeto.bootcampProject.business.requests.create.applicant.UpdateApplicantRequest;
 import com.tobeto.bootcampProject.business.responses.create.applicant.CreateApplicantResponse;
 import com.tobeto.bootcampProject.business.responses.create.applicant.GetAllApplicantResponse;
 import com.tobeto.bootcampProject.business.responses.create.applicant.GetApplicantResponseById;
+import com.tobeto.bootcampProject.business.responses.create.applicant.UpdateApplicantResponse;
+import com.tobeto.bootcampProject.entities.Applicant;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ import java.util.List;
 public class ApplicantController {
     private ApplicantService applicantService;
 
-    @PostMapping
+    @PostMapping("/create")
     public CreateApplicantResponse create(@RequestBody CreateApplicantRequest createApplicantRequest){
         return applicantService.create(createApplicantRequest);
     }
@@ -33,4 +32,13 @@ public class ApplicantController {
     public List<GetAllApplicantResponse> getAll() {
         return applicantService.getAll();
     }
+    @PutMapping("/update/{applicantId}")
+    public UpdateApplicantResponse update(@PathVariable int applicantId, @RequestBody UpdateApplicantRequest updateApplicantRequest){
+        return applicantService.update(applicantId, updateApplicantRequest);
+    }
+    @DeleteMapping("/deleteall")
+    public void deleteAll() {
+        applicantService.deleteAll();
+    }
+
 }

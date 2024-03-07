@@ -1,10 +1,9 @@
 package com.tobeto.bootcampProject.entities;
 
-import com.tobeto.bootcampProject.core.BaseEntity;
+import com.tobeto.bootcampProject.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 @Getter

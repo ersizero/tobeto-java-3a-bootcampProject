@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.core;
+package com.tobeto.bootcampProject.core.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -22,11 +23,11 @@ public abstract class BaseEntity<T> {
     private T id;
 
     @Column(name = "dateCreated")
-    private LocalDate dateCreated;
+    private Date dateCreated;
 
     @Column (name = "dateUpdated")
-    private LocalDate dateUpdated;
+    private Date dateUpdated;
 
     @Column (name = "dateRemoved")
-    private LocalDate dateRemoved;
+    private Date dateRemoved;
 }
